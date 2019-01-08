@@ -1,6 +1,6 @@
 package example.epsi.com.go_securi.model
 
-import common.isEmployeeIdValid
+import example.epsi.com.go_securi.common.isEmployeeIdValid
 
 
 data class LoginRequest(var employeeId: String = "")
