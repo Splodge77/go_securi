@@ -20,17 +20,24 @@
  * THE SOFTWARE.
  */
 
-package example.epsi.com.go_securi.firebase.authentication
+package example.epsi.com.go_securi.di.module
 
-interface FirebaseAuthenticationInterface {
+import example.epsi.com.go_securi.di.module.FirebaseModule
+import example.epsi.com.go_securi.firebase.authentication.FirebaseAuthenticationInterface
+import example.epsi.com.go_securi.firebase.authentication.FirebaseAuthenticationManager
+import example.epsi.com.go_securi.firebase.database.FirebaseDatabaseInterface
+import example.epsi.com.go_securi.firebase.database.FirebaseDatabaseManager
+import dagger.Binds
+import dagger.Module
+import javax.inject.Singleton
 
-  fun login(email: String, onResult: (Boolean) -> Unit)
+@Module(includes = [FirebaseModule::class])
+@Singleton
+abstract class InteractionModule {
 
-  fun register(email: String, password: String, userName: String, onResult: (Boolean) -> Unit)
+  @Binds
+  abstract fun authentication(authentication: FirebaseAuthenticationManager): FirebaseAuthenticationInterface
 
-  fun getUserId(): String
-
-  fun getUserName(): String
-
-  fun logOut(onResult: () -> Unit)
+  @Binds
+  abstract fun database(database: FirebaseDatabaseManager): FirebaseDatabaseInterface
 }

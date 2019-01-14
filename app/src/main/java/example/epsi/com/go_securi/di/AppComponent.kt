@@ -20,17 +20,20 @@
  * THE SOFTWARE.
  */
 
-package example.epsi.com.go_securi.firebase.authentication
+package example.epsi.com.go_securi.di
 
-interface FirebaseAuthenticationInterface {
+import example.epsi.com.go_securi.di.module.PresentationModule
+import example.epsi.com.go_securi.presentation.*
+import dagger.Component
+import javax.inject.Singleton
 
-  fun login(email: String, onResult: (Boolean) -> Unit)
+@Component(modules = [PresentationModule::class])
+@Singleton
+interface AppComponent {
 
-  fun register(email: String, password: String, userName: String, onResult: (Boolean) -> Unit)
+//  fun registerPresenter(): RegisterPresenter
 
-  fun getUserId(): String
+  fun loginPresenter(): LoginPresenter
 
-  fun getUserName(): String
-
-  fun logOut(onResult: () -> Unit)
+//  fun welcomePresenter(): WelcomePresenter
 }

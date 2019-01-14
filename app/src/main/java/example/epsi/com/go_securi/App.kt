@@ -20,17 +20,26 @@
  * THE SOFTWARE.
  */
 
-package example.epsi.com.go_securi.firebase.authentication
+package example.epsi.com.go_securi
 
-interface FirebaseAuthenticationInterface {
+import android.app.Application
+import com.google.firebase.FirebaseApp
+import example.epsi.com.go_securi.di.DaggerAppComponent
+import example.epsi.com.go_securi.di.AppComponent
 
-  fun login(email: String, onResult: (Boolean) -> Unit)
+class App : Application() {
 
-  fun register(email: String, password: String, userName: String, onResult: (Boolean) -> Unit)
+  companion object {
+    lateinit var instance: App
+      private set
 
-  fun getUserId(): String
+    val component: AppComponent by lazy { DaggerAppComponent.builder().build() }
+  }
 
-  fun getUserName(): String
+  override fun onCreate() {
+    super.onCreate()
+    instance = this
 
-  fun logOut(onResult: () -> Unit)
+    FirebaseApp.initializeApp(this)
+  }
 }

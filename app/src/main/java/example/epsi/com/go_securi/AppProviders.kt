@@ -20,17 +20,10 @@
  * THE SOFTWARE.
  */
 
-package example.epsi.com.go_securi.firebase.authentication
+package example.epsi.com.go_securi
 
-interface FirebaseAuthenticationInterface {
+private fun component() = App.component
 
-  fun login(email: String, onResult: (Boolean) -> Unit)
+fun loginPresenter() = component().loginPresenter()
 
-  fun register(email: String, password: String, userName: String, onResult: (Boolean) -> Unit)
-
-  fun getUserId(): String
-
-  fun getUserName(): String
-
-  fun logOut(onResult: () -> Unit)
-}
+//fun welcomePresenter() = component().welcomePresenter()

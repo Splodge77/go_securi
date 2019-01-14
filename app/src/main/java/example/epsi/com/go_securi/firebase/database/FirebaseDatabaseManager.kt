@@ -28,12 +28,15 @@ import example.epsi.com.go_securi.firebase.database.FirebaseDatabaseInterface
 import example.epsi.com.go_securi.model.*
 
 private const val KEY_USER = "user"
-private const val KEY_JOKE = "joke"
-private const val KEY_FAVORITE = "favorite"
+private const val KEY_IMAGE = "image"
 
 class FirebaseDatabaseManager @Inject constructor(private val database: FirebaseDatabase) : FirebaseDatabaseInterface {
-  override fun User(id: String, name: String, email: String) {
-    val user = User(id, name, email)
+  override fun createUser(id: String, name: String, email: String) {
+    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  }
+
+  override fun user(id: String, name: String, email: String, url: String) {
+    val user = user(id, name, email, url)
     database.reference.child(KEY_USER).child(id).setValue(user)
   }
 

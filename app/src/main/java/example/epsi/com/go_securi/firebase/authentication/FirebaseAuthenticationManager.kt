@@ -28,7 +28,7 @@ import example.epsi.com.go_securi.firebase.database.Inject
 
 class FirebaseAuthenticationManager @Inject constructor(private val authentication: FirebaseAuth) : FirebaseAuthenticationInterface {
 
-  override fun login(email: String, password: String, onResult: (Boolean) -> Unit) {
+  override fun login(email: String, onResult: (Boolean) -> Unit) {
     authentication.signInWithEmailAndPassword(email, password).addOnCompleteListener {
       onResult(it.isComplete && it.isSuccessful)
     }
